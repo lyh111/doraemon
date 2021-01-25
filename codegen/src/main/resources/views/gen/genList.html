@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  成功！
+  ${ctxAdmin}
+  <#form:form id="searchForm" action="${ctx}/autoallot/teventAutoAllot/listData" method="post" class="form-inline hide">
+      <#form:hidden path="officeCode" maxlength="32" class="form-control width-120"/>
+      <#form:select path="autoAllotType" dictType="auto_allot_type" blankOption="true" class="form-control"/>
+  </#form:form>
+</body>
+</html>

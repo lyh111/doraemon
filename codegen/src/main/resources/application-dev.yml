@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: codegen
+  datasource:
+    driver: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/codegen?useSSL=false&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    username: root
+    password: root
