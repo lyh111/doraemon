@@ -10,7 +10,7 @@ public class BaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> {
 
     public Page<T> findList(Page<T> page,T entity){
         QueryWrapper<T> w = new QueryWrapper();
-        QueryWrapperUtils.buildQueryWrapper(entity,w);
+        QueryWrapperUtils.buildQueryWrapper(entity,w,true);
         return this.page(page,w);
     }
 

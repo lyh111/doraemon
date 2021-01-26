@@ -36,6 +36,16 @@ public @interface Condition {
             public List<String> getKeyword() {
                 return Lists.newArrayList("in","notIn","groupBy","orderByAsc","orderByDesc");
             }
+        },
+        Func_Ext_collection{
+            public List<String> getKeyword() {
+                return Lists.newArrayList("in","notIn");
+            }
+        },
+        Func_Ext{
+            public List<String> getKeyword() {
+                return Lists.newArrayList("groupBy","orderByAsc","orderByDesc");
+            }
         };
 
         public abstract List<String> getKeyword();

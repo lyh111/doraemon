@@ -1,9 +1,15 @@
 package com.autosite.codegen.gen.entity;
-import com.autosite.codegen.config.mybatis.annotation.Condition;
-import com.baomidou.mybatisplus.annotation.TableName;
+
 import com.autosite.codegen.common.base.BaseEntity;
+import com.autosite.codegen.config.mybatis.annotation.Condition;
+import com.autosite.codegen.config.mybatis.annotation.OrderBy;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
+
 /**
  * <p>
  * 代码生成表
@@ -15,6 +21,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @TableName("as_gen_table")
+@OrderBy("create_date ASC")
 public class GenTable extends BaseEntity{
 
     private static final long serialVersionUID = 1L;
@@ -94,5 +101,9 @@ public class GenTable extends BaseEntity{
      * 其它生成选项
      */
     private String options;
+
+    @Condition(field = "table_name",keyword="in")
+    @TableField(exist = false)
+    private List<String> tableNameList;
 
 }

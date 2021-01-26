@@ -2,6 +2,7 @@ package com.autosite.codegen.common.base;
 
 import com.autosite.codegen.config.mybatis.annotation.Condition;
 import com.autosite.codegen.config.mybatis.condition.Between;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
@@ -22,6 +23,7 @@ public class BaseEntity {
 
     // 创建时间（区间查询）
     @Condition(field = "create_date",keyword = "between")
+    @TableField(exist = false)
     private Between createDateBetween;
 
     // 修改人
@@ -33,6 +35,7 @@ public class BaseEntity {
 
     // 修改时间（区间查询）
     @Condition(field = "update_date",keyword = "between")
+    @TableField(exist = false)
     private Between updateDateBetween;
 
     // 状态
