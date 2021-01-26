@@ -13,6 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 <% } %>
 <% } %>
+import com.autosite.codegen.config.mybatis.annotation.Condition;
 /**
  * <p>
  * ${table.comment!}
@@ -100,6 +101,9 @@ public class ${entity} implements Serializable {
     %>
     <% if(logicDeleteFieldName!'' == field.name){ %>
     @TableLogic
+    <% } %>
+    <% if(field.customMap != null && field.customMap.keyword != null && field.customMap.keyword != ''){ %>
+    @Condition(field = "${field.columnName}",keyword = "${field.customMap.keyword}")
     <% } %>
     private ${field.propertyType} ${field.propertyName};
 <% } %>

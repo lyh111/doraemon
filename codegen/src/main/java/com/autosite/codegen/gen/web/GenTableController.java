@@ -1,10 +1,15 @@
 package com.autosite.codegen.gen.web;
 
 
+import com.autosite.codegen.gen.entity.GenTable;
+import com.autosite.codegen.gen.service.impl.GenTableService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import com.autosite.codegen.common.base.BaseController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -17,6 +22,20 @@ import com.autosite.codegen.common.base.BaseController;
 @Controller
 @RequestMapping("/gen/genTable")
 public class GenTableController extends BaseController {
+    @Autowired
+    public GenTableService genTableService;
+
+    @RequestMapping("/findList")
+    @ResponseBody
+    public String findList(){
+        Page<GenTable> page = new Page<>();
+        page.setSize(10);
+        page.setCurrent(1);
+        GenTable gen = new GenTable();
+        gen.setTableName("js_gen_table");
+        page = genTableService.findList(page,gen);
+        return renderResult("true","success",page);
+    }
 
     @RequestMapping("/list")
     public String list(){

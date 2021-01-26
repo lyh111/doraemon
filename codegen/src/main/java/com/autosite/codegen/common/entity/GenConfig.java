@@ -3,6 +3,9 @@ package com.autosite.codegen.common.entity;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.util.List;
+import java.util.Map;
+
 @Getter
 @Builder
 public class GenConfig {
@@ -45,10 +48,16 @@ public class GenConfig {
      * 表名
      */
     private String tbName;
+
     /**
      * 是否去除表前缀
      */
     private Boolean isExPrefix;
+
+    /**
+     * 其他属性值
+     */
+    private Map<String,Map<String,Object>> fields;
 
     public boolean getIsExPrefix() {
         if (isExPrefix == null) {

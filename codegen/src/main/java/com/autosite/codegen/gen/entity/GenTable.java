@@ -1,4 +1,5 @@
 package com.autosite.codegen.gen.entity;
+import com.autosite.codegen.config.mybatis.annotation.Condition;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.autosite.codegen.common.base.BaseEntity;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class GenTable extends BaseEntity{
     /**
      * 表名
      */
+    @Condition(field = "table_name",keyword="eq")
     private String tableName;
 
     /**

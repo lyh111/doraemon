@@ -22,5 +22,5 @@ mybatis-plus:
 beetl:
   enabled: true
   suffix: html
-beetl-beetlsql:
-  dev: true
+beetlsql:
+  enabled: false
