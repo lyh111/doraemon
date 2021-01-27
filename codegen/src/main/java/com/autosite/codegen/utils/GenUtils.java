@@ -150,7 +150,10 @@ public class GenUtils {
         // 默认全局配置
         public Builder buildDefaultGlobalConfig(){
             GlobalConfig gc = new GlobalConfig();
-            String projectPath = System.getProperty("user.dir"); // 项目根目录
+            String projectPath = genConfig.getProjectPath();
+            if(StringUtils.isBlank(projectPath)){
+                projectPath = System.getProperty("user.dir"); // 项目根目录
+            }
             String projectName = genConfig.getProjectName(); // 项目名
             String author = genConfig.getAuthor(); // 作者
             String outPath = new StringBuffer(projectPath).append("/")

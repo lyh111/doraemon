@@ -3,12 +3,16 @@ package com.autosite.codegen.common.entity;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.util.List;
 import java.util.Map;
 
 @Getter
 @Builder
 public class GenConfig {
+
+    /**
+     * 项目根路径
+     */
+    private String projectPath;
     /**
      * 项目名
      */

@@ -38,6 +38,6 @@ public class GenTableController extends BaseController {
 
     @RequestMapping("/list")
     public String list(){
-        return "gen/genList";
+        return "themes/index";
     }
 }
