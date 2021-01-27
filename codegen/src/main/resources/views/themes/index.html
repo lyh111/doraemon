@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<% include('../include/head.html'){} %>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+	<!--左侧导航开始-->
+	<% include('include/left.html'){} %>
+	<!--右侧部分结束-->
+	<!--右侧边栏开始-->
+	<% include('include/right.html'){} %>
+	<!--右侧边栏结束-->
+	<!--mini聊天窗口开始-->
+	<% include('include/miniChat.html'){} %>
+	<!--mini聊天窗口结束-->
+</div>
+<% include('../include/footer.html'){} %>
+</body>
+
+</html>
