@@ -74,7 +74,8 @@ public class BeetlViewResolver extends AbstractTemplateViewResolver implements I
         ((Map)map).put("_version", (new StringBuilder()).insert(0, "1.0").append("-").append(date).toString());
         ((Map)map).put("ctxPath", path);
         // Global.getAdminPath()
-        ((Map)map).put("ctxAdmin", (new StringBuilder()).insert(0, path).append("/a").toString());
+//        ((Map)map).put("ctxAdmin", (new StringBuilder()).insert(0, path).append("/a").toString());
+        ((Map)map).put("ctxAdmin", (new StringBuilder()).insert(0, path).append("/").toString());
         // Global.getFrontPath()
         ((Map)map).put("ctxFront", (new StringBuilder()).insert(0, path).append("/f").toString());
         ((Map)map).put("ctxStatic", (new StringBuilder()).insert(0, path).append("/static").toString());
