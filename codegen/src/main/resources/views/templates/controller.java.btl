@@ -1,7 +1,12 @@
 package ${package.Controller};
 
-
+import ${package.Entity}.*;
+import ${package.ServiceImpl}.*;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
 
 <% if(restControllerStyle){ %>
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +16,9 @@ import org.springframework.stereotype.Controller;
 <% if(isNotEmpty(superControllerClassPackage)){ %>
 import ${superControllerClassPackage};
 <% } %>
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -35,5 +43,20 @@ public class ${table.controllerName} extends ${superControllerClass} {
 public class ${table.controllerName} {
     <% } %>
 
+    @Autowired
+    public ${table.serviceImplName} ${strutil.uncap(table.serviceImplName)};
+
+    @RequestMapping("/findList")
+    @ResponseBody
+    public String findList(${table.entityName} ${strutil.uncap(table.entityName)},HttpServletRequest request, HttpServletResponse response){
+        Page<${table.entityName}> page = ${strutil.uncap(table.serviceImplName)}.findList(${strutil.uncap(table.entityName)});
+        return renderResult("true","success",page);
+    }
+
+    @RequestMapping("/list")
+    public String list(${table.entityName} ${strutil.uncap(table.entityName)}, Model model){
+        model.addAttribute("${strutil.uncap(table.entityName)}", ${strutil.uncap(table.entityName)});
+        return "${package.ModuleName}/${table.entityName}List.html";
+    }
 }
 <% } %>

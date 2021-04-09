@@ -21,13 +21,4 @@ import java.util.List;
 @Service
 public class GenTableService extends BaseService<GenTableDao, GenTable> implements IGenTableService {
 
-    public Page<GenTable> findList(Page<GenTable> page,GenTable genTable){
-        page = new Page(1,10);
-        List<String> list = ListUtils.newArrayList();
-        list.add("js_sys_menu");
-        list.add("o_msg_setup");
-        genTable = new GenTable();
-        genTable.setTableNameList(list);
-        return super.findList(page,genTable);
-    }
 }

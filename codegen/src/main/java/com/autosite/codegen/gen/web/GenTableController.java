@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -31,13 +33,8 @@ public class GenTableController extends BaseController {
 
     @RequestMapping("/findList")
     @ResponseBody
-    public String findList(){
-//        Page<GenTable> page = new Page<>();
-//        page.setSize(10);
-//        page.setCurrent(1);
-//        GenTable gen = new GenTable();
-//        gen.setTableName("js_gen_table");
-        Page<GenTable> page = genTableService.findList(null,null);
+    public String findList(GenTable genTable,HttpServletRequest request, HttpServletResponse response){
+        Page<GenTable> page = genTableService.findList(genTable);
         return renderResult("true","success",page);
     }
 

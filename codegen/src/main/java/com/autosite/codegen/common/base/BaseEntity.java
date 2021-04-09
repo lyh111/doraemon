@@ -4,12 +4,13 @@ import com.autosite.codegen.config.mybatis.annotation.Condition;
 import com.autosite.codegen.config.mybatis.condition.Between;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
 import java.util.Date;
 
 @Data
-public class BaseEntity {
+public class BaseEntity<T> {
     // 主键
     @Condition(field = "id",keyword = "eq")
     private String id;
@@ -45,5 +46,8 @@ public class BaseEntity {
     // 备注
     @Condition(field = "remarks",keyword = "like")
     private String remarks;
+
+    @TableField(exist = false)
+    private Page<T> page;
 
 }

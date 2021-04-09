@@ -252,6 +252,32 @@ public class GenUtils {
                             .append("Dao").append(StringPool.DOT_XML).toString();
                 }
             });
+            // 自定义view的输出位置
+            String listTmpPath = "/templates/list.html.btl";
+            focList.add(new FileOutConfig(listTmpPath) {
+                @Override
+                public String outputFile(TableInfo tableInfo) {
+                    // 自定义输出文件名及路径
+                    return new StringBuffer(projectPath).append("/").append(projectName)
+                            .append("/src/main/resources/views/")
+                            .append(pkModuleName)
+                            .append("/").append(tableInfo.getEntityName())
+                            .append("List").append(".html").toString();
+                }
+            });
+            // 自定义view的输出位置
+            String formTmpPath = "/templates/form.html.btl";
+            focList.add(new FileOutConfig(formTmpPath) {
+                @Override
+                public String outputFile(TableInfo tableInfo) {
+                    // 自定义输出文件名及路径
+                    return new StringBuffer(projectPath).append("/").append(projectName)
+                            .append("/src/main/resources/views/")
+                            .append(pkModuleName)
+                            .append("/").append(tableInfo.getEntityName())
+                            .append("Form").append(".html").toString();
+                }
+            });
             cfg.setFileOutConfigList(focList);
             this.injectionConfig = cfg;
             return this;
