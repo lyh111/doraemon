@@ -1,3 +1,4 @@
+adminPath: a
 server:
   port: 8088
   servlet:
@@ -26,3 +27,17 @@ beetl:
   suffix: html
 beetlsql:
   enabled: false
+shiro:
+  # 登录
+  loginUrl: /${adminPath}/user/login
+  # 登录页面
+  redirectUrl: /${adminPath}/user/toLogin
+  # 无权限时跳转的url
+  unauthorizedUrl: /${adminPath}/user/role
+  # 授权过滤定义
+  filterChainDefinitions: |
+    /${adminPath}/user/logout = logout
+    /${adminPath}/user/login = authc
+    /${adminPath}/user/toLogin = anon
+    /${adminPath}/user/role = anon
+    /${adminPath}/** = user

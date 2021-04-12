@@ -7,10 +7,11 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class BaseEntity<T> {
+public class BaseEntity<T> implements Serializable {
     // 主键
     @Condition(field = "id",keyword = "eq")
     private String id;

@@ -8,9 +8,27 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
+import java.util.List;
+
 public class BaseService<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> {
 
-    public Page<T> findList(T entity){
+    /**
+     * 查询列表
+     * @param entity
+     * @return
+     */
+    public List<T> findList(T entity){
+        QueryWrapper<T> w = new QueryWrapper();
+        QueryWrapperUtils.buildQueryWrapper(entity,w,true);
+        return this.list(w);
+    }
+
+    /**
+     * 分页查询
+     * @param entity
+     * @return
+     */
+    public Page<T> findListByPage(T entity){
         Page<T> page = null;
         if(entity instanceof BaseEntity){
             page = ((BaseEntity) entity).getPage();

@@ -7,6 +7,8 @@ import com.autosite.codegen.gen.service.impl.GenTableService;
 import com.autosite.common.collect.ListUtils;
 import com.autosite.common.collect.MapUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,15 +28,16 @@ import java.util.Map;
  * @since 2021-01-22
  */
 @Controller
-@RequestMapping("/gen/genTable")
+@RequestMapping("${adminPath}/gen/genTable")
 public class GenTableController extends BaseController {
     @Autowired
     public GenTableService genTableService;
 
+    @RequiresPermissions("basicshop:tBasicShop:view")
     @RequestMapping("/findList")
     @ResponseBody
     public String findList(GenTable genTable,HttpServletRequest request, HttpServletResponse response){
-        Page<GenTable> page = genTableService.findList(genTable);
+        Page<GenTable> page = genTableService.findListByPage(genTable);
         return renderResult("true","success",page);
     }
 
