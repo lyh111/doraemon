@@ -29,17 +29,22 @@ beetlsql:
   enabled: false
 shiro:
   # 登录
-  loginUrl: /${adminPath}/user/login
+  loginUrl: /${adminPath}/login
   # 登录页面
-  redirectUrl: /${adminPath}/user/toLogin
+  redirectUrl: /${adminPath}/toLogin
   # 无权限时跳转的url
-  unauthorizedUrl: /${adminPath}/user/role
+  unauthorizedUrl: /${adminPath}/role
   # 验证成功后跳转路径
-  successUrl: /${adminPath}/user/index
+  successUrl: /${adminPath}/index
   # 授权过滤定义
   filterChainDefinitions: |
-    /${adminPath}/user/logout = logout
-    /${adminPath}/user/login = authc
-    /${adminPath}/user/toLogin = anon
-    /${adminPath}/user/role = anon
+    /${adminPath}/logout = logout
+    /${adminPath}/login = authc
+    /${adminPath}/toLogin = anon
+    /${adminPath}/role = anon
     /${adminPath}/** = user
+  globalSessionTimeout: 1800000
+  app:
+    sessionTimeOut: -1
+  web:
+    sessionTimeOut: 1800000

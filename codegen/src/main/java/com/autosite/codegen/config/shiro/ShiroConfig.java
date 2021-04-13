@@ -1,11 +1,11 @@
 package com.autosite.codegen.config.shiro;
 
 import com.autosite.common.io.PropertiesUtils;
+import com.autosite.common.lang.StringUtils;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
-import org.springframework.context.event.EventListener;
 
 import javax.servlet.Filter;
 import java.util.HashMap;
@@ -133,12 +132,17 @@ public class ShiroConfig {
         ShiroSessionManager shiroSessionManager = new ShiroSessionManager();
         //这里可以不设置。Shiro有默认的session管理。如果缓存为Redis则需改用Redis的管理
         shiroSessionManager.setSessionDAO(cacheSessionDAO);
-        // 设置超时间、60000ms(1分钟)
-        shiroSessionManager.setGlobalSessionTimeout(60000);
+        // 设置超时间、1800000ms(半小时)
+        PropertiesUtils env = PropertiesUtils.getInstance();
+        String globalSessionTimeout = env.getProperty("shiro.globalSessionTimeout");
+        if(StringUtils.isBlank(globalSessionTimeout)){
+            globalSessionTimeout = "1800000";// 半小时
+        }
+        shiroSessionManager.setGlobalSessionTimeout(Long.valueOf(globalSessionTimeout));
         // 开启seesion校验
-        shiroSessionManager.setSessionValidationSchedulerEnabled(true);
+//        shiroSessionManager.setSessionValidationSchedulerEnabled(true);
         // 1分钟检验一次
-        shiroSessionManager.setSessionValidationInterval(60000);
+//        shiroSessionManager.setSessionValidationInterval(60000);
         return shiroSessionManager;
     }
 
