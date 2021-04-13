@@ -18,4 +18,8 @@ public class OpenIdToken extends UsernamePasswordToken {
     public Object getCredentials() {
         return super.getCredentials();
     }
+
+    public String getOpenId(){
+        return openId;
+    }
 }

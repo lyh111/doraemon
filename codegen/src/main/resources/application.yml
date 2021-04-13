@@ -34,6 +34,8 @@ shiro:
   redirectUrl: /${adminPath}/user/toLogin
   # 无权限时跳转的url
   unauthorizedUrl: /${adminPath}/user/role
+  # 验证成功后跳转路径
+  successUrl: /${adminPath}/user/index
   # 授权过滤定义
   filterChainDefinitions: |
     /${adminPath}/user/logout = logout

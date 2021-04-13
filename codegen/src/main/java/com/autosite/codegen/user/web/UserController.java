@@ -39,10 +39,9 @@ public class UserController extends BaseController {
      * @return
      */
     @RequestMapping("/toLogin")
-    @ResponseBody
     public String toLogin(){
         log.info("跳转至登录页面！！！");
-        return renderResult("true","跳转至登录页面！",null);
+        return "sys/login";
     }
 
     /**
@@ -54,5 +53,10 @@ public class UserController extends BaseController {
     public String role(){
         log.info("没有权限跳转！！！");
         return renderResult("true","没有权限跳转！",null);
+    }
+
+    @RequestMapping("/index")
+    public String index(){
+        return "themes/index";
     }
 }

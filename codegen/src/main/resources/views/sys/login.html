@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include('../include/head.html'){} %>
+    <link href="${ctxStatic}/h/css/login.min.css?v=4.0.0" rel="stylesheet">
+    <script src="${ctxStatic}/sys/js/login.js?${_version}"></script>
+</head>
+
+<body class="signin">
+    <div class="signinpanel">
+        <div class="row">
+            <div class="col-sm-7">
+                <div class="signin-info">
+                    <div class="logopanel m-b">
+                        <h1>[ doraemon ]</h1>
+                    </div>
+                    <div class="m-b"></div>
+                    <h4>欢迎使用 <strong>doraemon</strong></h4>
+                    <ul class="m-b">
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势一</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势二</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势三</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势四</li>
+                        <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 优势五</li>
+                    </ul>
+                    <strong>还没有账号？ <a href="#">立即注册&raquo;</a></strong>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <form id="form" method="post" action="${ctxAdmin}/user/login">
+                    <h4 class="no-margins">登录：</h4>
+                    <p class="m-t-md">登录到doraemon</p>
+                    <input id="username" type="text" class="form-control uname" placeholder="用户名" />
+                    <input id="usernameH" name="username" type="hidden" class="form-control uname" placeholder="用户名" />
+                    <input id="password" type="password" class="form-control pword m-b" placeholder="密码" />
+                    <input id="passwordH" name="password" type="hidden" class="form-control pword m-b" placeholder="密码" />
+                    <a href="">忘记密码了？</a>
+                </form>
+                <button class="btn btn-success" onclick="login()">登录</button>
+            </div>
+        </div>
+        <div class="signup-footer">
+            <div class="pull-left">
+                &copy; 2015 All Rights Reserved. H+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    /**
+     * 登录
+     */
+    function login(){
+        console.log('${ctxAdmin}');
+        // 登录
+        var username = $("#username").val();
+        var password = $("#password").val();
+        $("#usernameH").val(username);
+        $("#passwordH").val(password);
+        console.log(111)
+        console.log(username)
+        console.log(password)
+        $("#form").submit();
+    }
+</script>
+
+</html>
