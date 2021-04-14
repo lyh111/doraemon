@@ -92,6 +92,8 @@ public class ConsumerAuthenticationFilter extends AuthenticationFilter {
                 }else{ // 进入登录页面
                     return true;
                 }
+            }else if(isLoginRequest(request,response)){ // 是登录接口直接跳转index
+                issueSuccessRedirect(request,response);
             }
         }catch (Exception e){
             throw new SysBZException(SysErrorCode.SYS_ERROR_4000000,e);

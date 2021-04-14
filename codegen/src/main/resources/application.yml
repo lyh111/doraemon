@@ -31,7 +31,7 @@ shiro:
   # 登录
   loginUrl: /${adminPath}/login
   # 登录页面
-  redirectUrl: /${adminPath}/toLogin
+  redirectUrl: /${adminPath}/login
   # 无权限时跳转的url
   unauthorizedUrl: /${adminPath}/role
   # 验证成功后跳转路径
