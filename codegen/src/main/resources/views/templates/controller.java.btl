@@ -49,7 +49,7 @@ public class ${table.controllerName} {
     @RequestMapping("/findList")
     @ResponseBody
     public String findList(${table.entityName} ${strutil.uncap(table.entityName)},HttpServletRequest request, HttpServletResponse response){
-        Page<${table.entityName}> page = ${strutil.uncap(table.serviceImplName)}.findList(${strutil.uncap(table.entityName)});
+        Page<${table.entityName}> page = ${strutil.uncap(table.serviceImplName)}.findListByPage(${strutil.uncap(table.entityName)});
         return renderResult("true","success",page);
     }
 

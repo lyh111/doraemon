@@ -37,8 +37,8 @@ public class GenUtils {
                 .projectName("codegen")
                 .author("lyh")
                 .pkParent("com.autosite.codegen")
-                .pkModuleName("gen1")
-                .tbName("as_gen_table")
+                .pkModuleName("job")
+                .tbName("as_job")
                 .isExPrefix(true)
                 .fields(fields)
                 .build();
@@ -179,10 +179,10 @@ public class GenUtils {
             String uname = genConfig.getDsUname(); // 数据源用户名
             String pass = genConfig.getDsPass(); // 数据源密码
             if (StringUtils.isBlank(url)) {
-                url = pro.getProperty("spring.datasource.url");
-                driverName = pro.getProperty("spring.datasource.driver");
-                uname = pro.getProperty("spring.datasource.username");
-                pass = pro.getProperty("spring.datasource.password");
+                url = pro.getProperty("spring.datasource.dynamic.datasource.master.url");
+                driverName = pro.getProperty("spring.datasource.dynamic.datasource.master.driver-class-name");
+                uname = pro.getProperty("spring.datasource.dynamic.datasource.master.username");
+                pass = pro.getProperty("spring.datasource.dynamic.datasource.master.password");
             }
             dsc.setUrl(url)
                     .setDriverName(driverName)
